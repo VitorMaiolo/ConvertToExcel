@@ -1,0 +1,29 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Conversor PDF para Excel</title>
+</head>
+<body>
+    <main>
+        <div class="logoImage">
+            <img src="{{ url_for('static', filename='img/Logo_Unimil.png') }}" alt="unimilLogo">
+        </div>
+
+        <form class="insertFile" action="/upload" method="POST" enctype="multipart/form-data">
+            <input type="file" name="file" id="fileInput" hidden required>
+            <label for="fileInput" class="customFileUpload">Selecionar Arquivo PDF</label>
+            <button type="submit">Converter Para Excel</button>
+        </form>
+
+        {% if download_link %}
+        <div class="convertedFile">
+            <a href="{{ download_link }}">Baixar Arquivo Excel</a>
+        </div>
+        {% endif %}
+    </main>
+</body>
+</html>
